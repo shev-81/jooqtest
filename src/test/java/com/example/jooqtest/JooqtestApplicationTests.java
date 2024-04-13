@@ -66,10 +66,10 @@ public class JooqtestApplicationTests {
 		var result = dslContext.select()
 				.from(CATEGORIES)
 				.where(CATEGORIES.NAME.eq("Одежда"))
-				.fetch(CATEGORIES.NAME);
+				.fetchInto(String.class);
 
 
-		assertEquals("Одежда", result.stream().findFirst().get());
+		assertEquals("Одежда", result.get(0));
 	}
 
 
@@ -99,6 +99,28 @@ public class JooqtestApplicationTests {
 
 		var singleResult = dslContext.fetchOptional(CATEGORIES, CATEGORIES.NAME.eq("Одежда"));
 		assertTrue(singleResult.isPresent());
+	}
+
+	@Test
+	public void resultLockTest() {
+
+		var result = dslContext.select(CATEGORIES.NAME, PRODUCTS.NAME)
+				.from(CATEGORIES)
+				.join(PRODUCTS)
+				.on(CATEGORIES.ID.eq(PRODUCTS.CATEGORY_ID))
+				.where(PRODUCTS.NAME.eq("CPU"))
+				.forUpdate()
+				.skipLocked()
+				.fetch();
+
+		result.stream().findFirst().ifPresent(record -> {
+			assertEquals("Technics", record.value1());
+			assertEquals("CPU", record.value2());
+		});
+	}
+
+	public record Person(String firstName, String lastName) {
+
 	}
 
 

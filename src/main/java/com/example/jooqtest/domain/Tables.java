@@ -4,6 +4,12 @@
 package com.example.jooqtest.domain;
 
 
+import com.example.jooqtest.domain.tables.BatchJobExecution;
+import com.example.jooqtest.domain.tables.BatchJobExecutionContext;
+import com.example.jooqtest.domain.tables.BatchJobExecutionParams;
+import com.example.jooqtest.domain.tables.BatchJobInstance;
+import com.example.jooqtest.domain.tables.BatchStepExecution;
+import com.example.jooqtest.domain.tables.BatchStepExecutionContext;
 import com.example.jooqtest.domain.tables.Categories;
 import com.example.jooqtest.domain.tables.Products;
 
@@ -13,6 +19,36 @@ import com.example.jooqtest.domain.tables.Products;
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Tables {
+
+    /**
+     * The table <code>public.batch_job_execution</code>.
+     */
+    public static final BatchJobExecution BATCH_JOB_EXECUTION = BatchJobExecution.BATCH_JOB_EXECUTION;
+
+    /**
+     * The table <code>public.batch_job_execution_context</code>.
+     */
+    public static final BatchJobExecutionContext BATCH_JOB_EXECUTION_CONTEXT = BatchJobExecutionContext.BATCH_JOB_EXECUTION_CONTEXT;
+
+    /**
+     * The table <code>public.batch_job_execution_params</code>.
+     */
+    public static final BatchJobExecutionParams BATCH_JOB_EXECUTION_PARAMS = BatchJobExecutionParams.BATCH_JOB_EXECUTION_PARAMS;
+
+    /**
+     * The table <code>public.batch_job_instance</code>.
+     */
+    public static final BatchJobInstance BATCH_JOB_INSTANCE = BatchJobInstance.BATCH_JOB_INSTANCE;
+
+    /**
+     * The table <code>public.batch_step_execution</code>.
+     */
+    public static final BatchStepExecution BATCH_STEP_EXECUTION = BatchStepExecution.BATCH_STEP_EXECUTION;
+
+    /**
+     * The table <code>public.batch_step_execution_context</code>.
+     */
+    public static final BatchStepExecutionContext BATCH_STEP_EXECUTION_CONTEXT = BatchStepExecutionContext.BATCH_STEP_EXECUTION_CONTEXT;
 
     /**
      * The table <code>public.categories</code>.
